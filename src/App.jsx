@@ -4,22 +4,21 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
- 
   return (
-  <div>
-      <h1>Blogging App</h1>
+    <div>
+      {/* Header */}
+      <h1>My Blog</h1>
 
+      {/* Create Post Section */}
       <section>
-        <h2>Blog Posts</h2>
-        <p>This is where your blog posts will go.</p>
+        <h2>Create a Post</h2>
       </section>
 
+      {/* Blog Posts Section */}
       <section>
-        <h2>Videos</h2>
-        <p>This is where your videos will go.</p>
+        <h2>Blog Posts</h2>
       </section>
     </div>
   );
 }
-
 export default App;
