@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,10 +8,21 @@ function App() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
+  useEffect(function(){
+    console.log("effectran")
+      const savedPost=localStorage.getItem("blogpost")
+      const savedPostJSON=JSON.parse(savedPost)
+      setPosts(savedPostJSON || [])
+  }, [])
+
   const addPost = () => {
     if (title && content) {
       const newPost = { title, content };
-      setPosts([newPost, ...posts]);
+      setPosts((currentPosts)=>{
+        const newValue = [newPost, ...currentPosts]
+        localStorage.setItem("blogpost",JSON.stringify(newValue))
+        return newValue
+      });
       setTitle('');
       setContent('');
     }
