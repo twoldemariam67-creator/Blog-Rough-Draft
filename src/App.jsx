@@ -1,9 +1,13 @@
 import { useState,useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  let navigate=useNavigate();
   const [posts, setPosts] = useState([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -65,7 +69,7 @@ function App() {
           <p>No posts yet</p>
         ) : (
           posts.map((post, index) => (
-            <div key={index} className="post">
+            <div key={index} className="post" onClick={()=>{navigate("/"+post.title)}}>
               <h3>{post.title}</h3>
               <p>{post.content}</p>
             </div>
