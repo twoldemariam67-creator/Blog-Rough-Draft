@@ -71,7 +71,7 @@ function App() {
           posts.map((post, index) => (
             <div key={index} className="post" onClick={()=>{navigate("/"+post.title)}}>
               <h3>{post.title}</h3>
-              <p>{post.content}</p>
+              <p>{displayText(post.content)}</p>
             </div>
           ))
         )}
@@ -80,3 +80,12 @@ function App() {
   );
 }
 export default App;
+
+function displayText(text){
+ if(text.length<50) {
+  return text
+ }else{
+  return text.slice(0,49)+"..."
+  
+ }
+}
